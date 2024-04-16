@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>Hain - Preferences</title>
+  <link rel="stylesheet" href="./lib/font-awesome-5.0.8/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="./lib/common.css">
+  <style type="text/css">
+    body, div, h1 {
+      font-family: Roboto, sans-serif;
+    }
+  </style>
+  <script type="text/javascript">
+    // DevTools
+    document.addEventListener('keydown', function (e) {
+      if (e.which === 123 /* F12 */) {
+        require('electron').remote.getCurrentWindow().toggleDevTools();
+      } else if (e.which === 116 /* F5 */) {
+        location.reload();
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+
+  <div id="app"></div>
+
+  <script>
+    process.env.NODE_ENV = 'production';
+    setTimeout(() => {
+      require('../renderer/pref.js');
+    }, 200);
+  </script>
+</body>
+</html>
