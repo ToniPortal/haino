@@ -17,14 +17,19 @@ function createWindow() {
     width: 800,
     height: 544,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
+      // preload: path.join(__dirname, 'preload.js')
+      contextIsolation: false,
+      nodeIntegration: true
+
+    },
+    frame: false,
   })
   Menu.setApplicationMenu(null)
   mainWindow.setMenuBarVisibility(false);
 
   mainWindow.loadFile('dist/index.html') // and load the index.html of the app.
 
+  mainWindow.webContents.openDevTools()
 
   // Créer le raccourci clavier Alt+Enter pour afficher l'application.
   globalShortcut.register('Alt+Space', () => {
