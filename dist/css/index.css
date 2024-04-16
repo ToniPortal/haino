@@ -7,7 +7,7 @@ body {
   font-weight: 400;
 }
 
-kbd {
+/* kbd {
   font-size: 12px;
   font-family: 'Roboto', sans-serif;
   color: #888;
@@ -16,4 +16,4 @@ kbd {
   border-radius: 2px;
   padding: .2em;
   box-shadow: 0 1px 0 rgba(10, 12, 14, 0.1), 0 0 0 1px white inset;
-}
+} */
