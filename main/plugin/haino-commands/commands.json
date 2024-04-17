@@ -1,0 +1,26 @@
+[
+  {
+    "primaryText": "About Hain",
+    "command": "/hain about"
+  },
+  {
+    "primaryText": "Open Preferences",
+    "command": "/hain pref"
+  },
+  {
+    "primaryText": "Check for Update",
+    "command": "/hain update"
+  },
+  {
+    "primaryText": "Reload Plugins",
+    "command": "/hain reload"
+  },
+  {
+    "primaryText": "Restart Hain",
+    "command": "/hain restart"
+  },
+  {
+    "primaryText": "Quit Hain",
+    "command": "/hain quit"
+  }
+]
