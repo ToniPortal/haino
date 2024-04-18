@@ -11,11 +11,9 @@
   "keywords": [],
   "author": "ToniPortal",
   "license": "MIT",
-  "dependencies": {
-    "@millyc/electron-reload": "^3.0.0",
-    "electron": "^30.0.0"
-  },
   "devDependencies": {
+    "@millyc/electron-reload": "^3.0.0",
+    "electron": "^30.0.0",
     "electron-packager": "^17.1.2"
   }
 }
