@@ -9,12 +9,13 @@ const path = require('node:path')
 // autoUpdater.setFeedURL({ url })
 
 // Hot Reload
-// const electronReload = require('@millyc/electron-reload');
-// electronReload(__dirname, {
-//   electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
-//   hardResetMethod: 'exit',
-// });
-
+if (!app.isPackaged) {
+  const electronReload = require('@millyc/electron-reload');
+  electronReload(__dirname, {
+    electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+    hardResetMethod: 'exit',
+  });
+}
 
 
 function createWindow() {
