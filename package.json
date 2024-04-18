@@ -1,6 +1,6 @@
 {
   "name": "haino",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "[![Build status](https://ci.appveyor.com/api/projects/status/l4p8r613wckaiqm6?svg=true)](https://ci.appveyor.com/project/appetizermonster/hain)\r [![Build Status](https://travis-ci.org/hainproject/hain.svg)](https://travis-ci.org/hainproject/hain)\r [![Join the chat at https://gitter.im/appetizermonster/hain](https://badges.gitter.im/appetizermonster/hain.svg)](https://gitter.im/appetizermonster/hain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)",
   "main": "main.js",
   "scripts": {
