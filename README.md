@@ -1,7 +1,6 @@
 # Hain
-[![Build status](https://ci.appveyor.com/api/projects/status/l4p8r613wckaiqm6?svg=true)](https://ci.appveyor.com/project/appetizermonster/hain)
-[![Build Status](https://travis-ci.org/hainproject/hain.svg)](https://travis-ci.org/hainproject/hain)
-[![Join the chat at https://gitter.im/appetizermonster/hain](https://badges.gitter.im/appetizermonster/hain.svg)](https://gitter.im/appetizermonster/hain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build status](https://ci.appveyor.com/api/projects/status/l4p8r613wckaiqm6?svg=true)](https://ci.appveyor.com/project/appetizermonster/haino)
+[![Build Status](https://travis-ci.org/hainproject/hain.svg)](https://travis-ci.org/hainproject/haino)
 
 An <kbd>alt</kbd>+<kbd>space</kbd> launcher for Windows, built with Electron.
 
