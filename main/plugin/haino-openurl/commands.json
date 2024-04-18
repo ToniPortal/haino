@@ -1,0 +1,22 @@
+[
+  {
+    "primaryText": "Google Image",
+    "command": "/gi"
+  },
+  {
+    "primaryText": "Google Search",
+    "command": "/g"
+  },
+  {
+    "primaryText": "A plugin for search fastly a gif",
+    "command": "/gif"
+  },
+  {
+    "primaryText": "Bing Image",
+    "command": "/bi"
+  },
+  {
+    "primaryText": "Bing search",
+    "command": "/b"
+  }
+]

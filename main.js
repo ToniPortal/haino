@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, Menu, globalShortcut, ipcMain, autoUpdater, dialog } = require('electron')
+const { app, BrowserWindow, Menu, globalShortcut, ipcMain, autoUpdater, dialog, shell } = require('electron')
 const path = require('node:path')
 
 
@@ -61,7 +61,7 @@ function createWindow() {
 app.whenReady().then(() => {
 
   createWindow()
-  
+
 
   app.on('activate', function () { // Sur macOS, il est courant de recréer une fenêtre dans l'application lorsque
     if (BrowserWindow.getAllWindows().length === 0) createWindow();// l'icône du dock est cliquée et qu'il n'y a pas d'autres fenêtres ouvertes.
@@ -139,8 +139,7 @@ autoUpdater.on('error', (message) => {
   console.error(message)
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+// In this file you can include the rest of your app's specific main process code. 
 
 ipcMain.on('restart-app', () => {
   app.relaunch();
@@ -150,6 +149,15 @@ ipcMain.on('restart-app', () => {
 ipcMain.on('quit-app', () => {
   if (process.platform !== 'darwin') app.quit()
 });
+
 ipcMain.on('update-app', () => {
   checkForUpdates()
 });
+
+ipcMain.on('url', async (event, url) => {
+  shell.openExternal(url)
+});
+
+
+
+// You can also put them in separate files and require them here.
