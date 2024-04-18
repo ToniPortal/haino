@@ -31,7 +31,7 @@ jobs:
       run: npm run build
   
     - name: Zip the app
-      run: Compress-Archive -Path build/Haino-win32-x64 -DestinationPath hain/Haino-win32-x64.zip -Force
+      run: Compress-Archive -Path build/Haino-win32-x64 -DestinationPath build/Haino-win32-x64.zip -Force
 
     - name: Create Release
       id: create_release
