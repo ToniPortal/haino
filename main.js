@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, Menu, globalShortcut, ipcMain, autoUpdater, dialog, shell } = require('electron')
 const path = require('node:path')
+const fs = require("fs")
 
 
 // const server = "https://hazel-lpidquvf8-pastres-projects.vercel.app"
@@ -157,6 +158,27 @@ ipcMain.on('update-app', () => {
 ipcMain.on('url', async (event, url) => {
   shell.openExternal(url)
 });
+
+const downloadAndExtractFile = require('./main/shared/downloadFile');
+
+ipcMain.on('hpm', async (event, namePlugin) => {
+
+
+  downloadAndExtractFile(namePlugin)
+    .then(() => {
+      event.returnValue = "Le plugin " + namePlugin + " à était télécharger !"; // Envoyer la réponse au processus de rendu
+
+      console.log('Le fichier a été téléchargé avec succès.');
+    })
+    .catch((error) => {
+      event.returnValue = 'Erreur lors du téléchargement du fichier : ' + error.message; // Envoyer l'erreur au processus de rendu
+
+      console.error('Une erreur s\'est produite lors du téléchargement du fichier :', error);
+    });
+
+});
+
+
 
 
 

@@ -69,14 +69,14 @@ const loadData = async () => {
                     commandName = (commands.command).slice(1);
                 }
 
-                let whatis = false
-                if (plugin.name == "haino-commands") {
-                    whatis = true;
+                let commandType = false
+                if (plugin.commandType) {
+                    commandType = true;
                 }
 
                 let key = false;
                 if (commands.key) {
-                    key = true;
+                    key = commands.key;
                 }
 
                 try {
@@ -86,7 +86,7 @@ const loadData = async () => {
                         error: null,
                         command: commands.command,
                         primaryText: commands.primaryText,
-                        what: whatis,
+                        commandType: commandType,
                         key: key
                     };
                     pluginModules.push(moduleData);
@@ -133,7 +133,7 @@ async function handleInput(event) {
     try {
         for (const plugin of commandModules) {
             for (const moduleData of plugin.plugin) {
-                if (moduleData.command.trim() === userInput.trim() && moduleData.what == true) {
+                if (moduleData.command.trim() === userInput.trim() && moduleData.commandType == true) {
                     if (moduleData.error) {
                         moduleData.module.run(moduleData.error);
                     } else {
@@ -145,7 +145,7 @@ async function handleInput(event) {
                             moduleData.module.run(userInput, ki);
                         }
                     }
-                } else if ((moduleData.command.split(" ")[0]) == (userInput.split(" ")[0]) && moduleData.what == false) {
+                } else if ((moduleData.command.split(" ")[0]) == (userInput.split(" ")[0]) && moduleData.commandType == false) {
                     if (moduleData.error) {
                         moduleData.module.run(moduleData.error);
                     } else {

@@ -1,26 +1,32 @@
 [
   {
     "primaryText": "About Hain",
-    "command": "/hain about"
+    "command": "/hain about",
+    "commandType": true
   },
   {
     "primaryText": "Open Preferences",
-    "command": "/hain pref"
+    "command": "/hain pref",
+    "commandType": true
   },
   {
     "primaryText": "Check for Update",
-    "command": "/hain update"
+    "command": "/hain update",
+    "commandType": true
   },
   {
     "primaryText": "Reload Plugins",
-    "command": "/hain reload"
+    "command": "/hain reload",
+    "commandType": true
   },
   {
     "primaryText": "Restart Hain",
-    "command": "/hain restart"
+    "command": "/hain restart",
+    "commandType": true
   },
   {
     "primaryText": "Quit Hain",
-    "command": "/hain quit"
+    "command": "/hain quit",
+    "commandType": true
   }
 ]

@@ -1,0 +1,7 @@
+[
+  {
+    "primaryText": "Searching plugin",
+    "command": "/hpm",
+    "key": true
+  }
+]
