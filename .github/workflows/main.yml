@@ -40,7 +40,7 @@ jobs:
         files: |
           build/Haino-win32-x64.zip
         token: ${{ secrets.GITHUB_TOKEN }}
-        tag_name: v${{ github.ref }}
+        tag_name: v${{ steps.version.outputs.version }}
         name: Release v${{ steps.version.outputs.version }}
 
     - name: Push changes
