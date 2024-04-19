@@ -1,6 +1,5 @@
-# Hain
-[![Build status](https://ci.appveyor.com/api/projects/status/l4p8r613wckaiqm6?svg=true)](https://ci.appveyor.com/project/appetizermonster/haino)
-[![Build Status](https://travis-ci.org/hainproject/hain.svg)](https://travis-ci.org/hainproject/haino)
+# Haino
+[![Release](https://github.com/ToniPortal/haino/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/ToniPortal/haino/actions/workflows/main.yml)
 
 An <kbd>alt</kbd>+<kbd>space</kbd> launcher for Windows, built with Electron.
 
@@ -18,22 +17,18 @@ I believe the strict syntax can provide more powerful and fast response than to 
 
 ## Features
 
-* Searching Executable files very fast with Fuzzy Matching
 * Plugins in Pure JavaScript
 
 ## Downloads
 
-Go to [Releases](https://github.com/hainproject/hain/releases), then you can download prebuilt binaries.
+Go to [Releases](https://github.com/ToniPortal/haino/releases), then you can download prebuilt binaries.
 
 ## Usage
 Run and press <kbd>alt</kbd>+<kbd>space</kbd> anywhere.
 
-## Themes
-See [THEMES.md](THEMES.md)
-
 ## How to make Plugins
 
-See [Plugin Documentation](http://hainproject.github.io/hain/docs/)
+Actually working in
 
 ## Development Requirements
 
@@ -65,25 +60,12 @@ npm run dev
 npm run build
 ```
 
-### Build for Linux
-
-```shell
-npm run build-debian
-```
-
-### Build for macOS
-
-```shell
-gulp build-darwin
-```
 
 ## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+See of basic app -> [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Credits
-The name "Hain" is named by Hyunseop Lee, it means "a Servant" in Korean.  
-The app icon & gif are designed by Yunsung Lee.  
-It uses [npmsearch.com](https://github.com/solids/npmsearch) for searching packages for now.  
+The basic app is named "hain" and copy that
 
 ## License
 MIT
