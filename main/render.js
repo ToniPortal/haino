@@ -9,6 +9,7 @@ const path = require('node:path');
  * @module main/commandHandler
  * @see ../main/commandHandler.js
  */
+const { handleInput } = require("../main/commandHandler");
 
 /**
  * Attaches an event listener to the input field with the id 'commandInput'.

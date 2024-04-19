@@ -1,0 +1,7 @@
+[
+  {
+    "primaryText": "Launch a app",
+    "command": "/a",
+    "key": true
+  }
+]

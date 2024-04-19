@@ -74,6 +74,11 @@ const loadData = async () => {
                     whatis = true;
                 }
 
+                let key = false;
+                if (commands.key) {
+                    key = true;
+                }
+
                 try {
                     const moduleData = {
                         msg: "Module chargé avec succès.",
@@ -81,7 +86,8 @@ const loadData = async () => {
                         error: null,
                         command: commands.command,
                         primaryText: commands.primaryText,
-                        what: whatis
+                        what: whatis,
+                        key: key
                     };
                     pluginModules.push(moduleData);
                 } catch (error) {
@@ -147,8 +153,10 @@ async function handleInput(event) {
                         di.innerText = moduleData.primaryText;
 
                         // Exécuter le module si la touche est pressée
-                        if (event.key === touche) {
+                        if (event.key === touche && moduleData.key == false) {
                             moduleData.module.run(userInput, ki);
+                        } else if (moduleData.key == true) {
+                            moduleData.module.run(userInput, ki, event.key);
                         }
                     }
                 } else if (event.key == "Backspace" && event.key != "Enter") {
