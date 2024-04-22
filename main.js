@@ -1,23 +1,20 @@
+/* eslint-disable */
+
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, Menu, globalShortcut, ipcMain, autoUpdater, dialog, shell } = require('electron')
-const path = require('node:path')
-const fs = require("fs")
-
-
-// const server = "https://hazel-lpidquvf8-pastres-projects.vercel.app"
-// const url = `${server}/update/${process.platform}/${app.getVersion()}`
-
-// autoUpdater.setFeedURL({ url })
+const {
+  app, BrowserWindow, Menu, globalShortcut, ipcMain, autoUpdater, dialog, shell,
+} = require('electron'),
+  electronReload = require('@millyc/electron-reload'),
+  path = require('node:path');
+/* eslint-enable */
 
 // Hot Reload
 if (!app.isPackaged) {
-  const electronReload = require('@millyc/electron-reload');
   electronReload(__dirname, {
     electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
     hardResetMethod: 'exit',
   });
 }
-
 
 function createWindow() {
   // Create the browser window.
@@ -27,17 +24,16 @@ function createWindow() {
     webPreferences: {
       // preload: path.join(__dirname, 'preload.js')
       contextIsolation: false,
-      nodeIntegration: true
-
+      nodeIntegration: true,
     },
     frame: false,
-  })
-  Menu.setApplicationMenu(null)
+  });
+  Menu.setApplicationMenu(null);
   mainWindow.setMenuBarVisibility(false);
 
-  mainWindow.loadFile('dist/index.html') // and load the index.html of the app.
+  mainWindow.loadFile('dist/index.html'); // and load the index.html of the app.
 
-  mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
 
   // Créer le raccourci clavier Alt+Enter pour afficher l'application.
   globalShortcut.register('Alt+Space', () => {
@@ -53,42 +49,33 @@ function createWindow() {
       app.quit();
     }
   });
-
 }
 
-
-
-// This method will be called when Electron has finished initialization and is ready to create browser windows. Some APIs can only be used after this event occurs. 
 app.whenReady().then(() => {
+  createWindow();
 
-  createWindow()
-
-
-  app.on('activate', function () { // Sur macOS, il est courant de recréer une fenêtre dans l'application lorsque
+  app.on('activate', () => { // Sur macOS, il est courant de recréer une fenêtre dans l'application lorsque
     if (BrowserWindow.getAllWindows().length === 0) createWindow();// l'icône du dock est cliquée et qu'il n'y a pas d'autres fenêtres ouvertes.
   });
-
-
-})
+});
 
 app.on('will-quit', () => {
   // Unregister a shortcut.
-  globalShortcut.unregister('Alt+Space')
+  globalShortcut.unregister('Alt+Space');
   globalShortcut.unregister('Escape');
 
   // Unregister all shortcuts.
   // globalShortcut.unregisterAll()
-})
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
-})
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit();
+});
 
-
-//Update :
+// Update :
 
 // Fonction pour vérifier les mises à jour
 const checkForUpdates = async () => {
@@ -106,7 +93,7 @@ const checkForUpdates = async () => {
         buttons: ['Mettre à jour', 'Annuler'],
         defaultId: 0,
         title: 'Nouvelle version disponible',
-        message: `Une nouvelle version (${latestVersion}) est disponible. Voulez-vous mettre à jour ?`
+        message: `Une nouvelle version (${latestVersion}) est disponible. Voulez-vous mettre à jour ?`,
       });
 
       if (choice.response === 0) {
@@ -119,7 +106,6 @@ const checkForUpdates = async () => {
   }
 };
 
-
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
   const dialogOpts = {
     type: 'info',
@@ -127,59 +113,51 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     title: 'Application Update',
     message: process.platform === 'win32' ? releaseNotes : releaseName,
     detail:
-      'A new version has been downloaded. Restart the application to apply the updates.'
-  }
+      'A new version has been downloaded. Restart the application to apply the updates.',
+  };
 
   dialog.showMessageBox(dialogOpts).then((returnValue) => {
-    if (returnValue.response === 0) autoUpdater.quitAndInstall()
-  })
-})
+    if (returnValue.response === 0) autoUpdater.quitAndInstall();
+  });
+});
 
 autoUpdater.on('error', (message) => {
-  console.error('There was a problem updating the application')
-  console.error(message)
-})
+  console.error('There was a problem updating the application');
+  console.error(message);
+});
 
-// In this file you can include the rest of your app's specific main process code. 
+// In this file you can include the rest of your app's specific main process code.
 
 ipcMain.on('restart-app', () => {
   app.relaunch();
-  if (process.platform !== 'darwin') app.quit()
+  if (process.platform !== 'darwin') app.quit();
 });
 
 ipcMain.on('quit-app', () => {
-  if (process.platform !== 'darwin') app.quit()
+  if (process.platform !== 'darwin') app.quit();
 });
 
 ipcMain.on('update-app', () => {
-  checkForUpdates()
+  checkForUpdates();
 });
 
 ipcMain.on('url', async (event, url) => {
-  shell.openExternal(url)
+  shell.openExternal(url);
 });
 
 const downloadAndExtractFile = require('./main/shared/downloadFile');
 
 ipcMain.on('hpm', async (event, namePlugin) => {
-
-
   downloadAndExtractFile(namePlugin)
     .then(() => {
-      event.returnValue = "Le plugin " + namePlugin + " à était télécharger !"; // Envoyer la réponse au processus de rendu
+      event.returnValue = `Le plugin ${namePlugin} à était télécharger !`; // Envoyer la réponse au processus de rendu
 
       console.log('Le fichier a été téléchargé avec succès.');
     })
     .catch((error) => {
-      event.returnValue = 'Erreur lors du téléchargement du fichier : ' + error.message; // Envoyer l'erreur au processus de rendu
+      event.returnValue = `Erreur lors du téléchargement du fichier : ${error.message}`; // Envoyer l'erreur au processus de rendu
 
       console.error('Une erreur s\'est produite lors du téléchargement du fichier :', error);
     });
-
 });
-
-
-
-
-
 // You can also put them in separate files and require them here.

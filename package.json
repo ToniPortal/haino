@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "set NODE_ENV=dev && electron .",
-    "start": "electron .",
+    "start": "eslint . --fix && electron .",
     "git": "git add . && git commit -am 'patch' && npm version patch && electron .",
     "build": "electron-packager . Haino --platform=win32 --arch=x64 --out=build --overwrite",
     "changelog": "conventional-changelog -p electron -i CHANGELOG.md -s -r 0",
@@ -15,9 +15,15 @@
   "author": "ToniPortal",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.1.1",
     "@millyc/electron-reload": "^3.0.0",
     "electron": "^30.0.0",
-    "electron-packager": "^17.1.2"
+    "electron-packager": "^17.1.2",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.0.0"
   },
   "dependencies": {
     "extract-zip": "^2.0.1"
