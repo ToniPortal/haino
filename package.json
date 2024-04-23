@@ -1,19 +1,16 @@
 {
   "name": "haino",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Haino prooject",
   "main": "main.js",
   "scripts": {
     "test": "set NODE_ENV=dev && electron .",
     "build": "electron-packager . Haino --platform=win32 --arch=x64 --out=build --overwrite",
-
     "start": "eslint . && electron .",
     "fix": "eslint . --fix",
-
     "changelog": "conventional-changelog -p electron -i CHANGELOG.md -s -r 0",
     "patch": "npm version patch",
     "autopatch": "git add . && git commit -am 'patch' && npm version patch && electron .",
-
     "jest": "npx jest"
   },
   "keywords": [
