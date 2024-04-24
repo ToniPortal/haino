@@ -4,17 +4,17 @@
 const {
   app, BrowserWindow, Menu, globalShortcut, ipcMain, autoUpdater, dialog, shell,
 } = require('electron'),
-  electronReload = require('@millyc/electron-reload'),
   path = require('node:path');
 /* eslint-enable */
 
 // Hot Reload
-// if (!app.isPackaged) {
-//   electronReload(__dirname, {
-//     electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
-//     hardResetMethod: 'exit',
-//   });
-// }
+if (!app.isPackaged) {
+  const electronReload = require('@millyc/electron-reload');
+  electronReload(__dirname, {
+    electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+    hardResetMethod: 'exit',
+  });
+}
 
 function createWindow() {
   // Create the browser window.
@@ -39,6 +39,7 @@ function createWindow() {
     if (!mainWindow.isVisible()) {
       mainWindow.show();
     } else {
+      console.log("Hidden app !")
       mainWindow.hide();
     }
   });
@@ -84,6 +85,7 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app's specific main process code.
 
 ipcMain.on('restart-app', () => {
+  console.log("Restart app !")
   app.relaunch();
   if (process.platform !== 'darwin') app.quit();
 });
